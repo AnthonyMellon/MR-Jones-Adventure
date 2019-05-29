@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 namespace MrJonesAdventure
 {
     class Program
-    {
+    {        
+
         static void MainMenu()
         {
-
+            string[] MenuOptions = { "", "", "", ""};
         }
 
         static void PauseMenu()
@@ -65,6 +66,7 @@ namespace MrJonesAdventure
 
         static void Main()
         {
+            MainMenu();
         }
     }
 }

@@ -8,7 +8,62 @@ namespace MrJonesAdventure
 {
     class Program
     {
-        static void Main(string[] args)
+        static void MainMenu()
+        {
+
+        }
+
+        static void PauseMenu()
+        {
+
+        }
+
+        static void InventoryMenu()
+        {
+
+        }
+
+        static void Player()
+        {
+
+        }
+
+        static void UI()
+        {
+
+        }
+
+        static void Puzzle1()
+        {
+
+        }
+        static void Puzzle2()
+        {
+
+        }
+
+        static void Trap1()
+        {
+
+        }
+
+        static void Trap2()
+        {
+
+        }
+
+        static void Room1()
+        {
+
+        }
+
+        static void Room2()
+        {
+
+        }
+
+
+        static void Main()
         {
         }
     }

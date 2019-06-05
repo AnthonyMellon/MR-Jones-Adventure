@@ -148,6 +148,10 @@ namespace MrJonesAdventure
 
         static void Room1()
         {
+            Console.WriteLine("You enter the room that has 1 door which is locked.");
+            Console.WriteLine("To unlock the door you must complete the puzzle.");
+            Puzzle1();
+            
 
 
 

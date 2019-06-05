@@ -156,17 +156,27 @@ namespace MrJonesAdventure
             Console.WriteLine();
             Console.WriteLine("Are you ready to begin");
             Console.WriteLine("Yes".PadRight(20) + "No");
-            if (Console.ReadLine().ToLower() == "yes")
+            bool loop = true;
+            string temp;
+            while (loop == true)
             {
-                StartRoom();
-            }
-            else if (Console.ReadLine().ToLower() == "no")
-            {
-                MainMenu();
-            }
-            else
-            {
-                Console.WriteLine("I think you may have trouble with this game. Please enter Yes or No");
+                temp = Console.ReadLine().ToLower();
+                if (temp == "yes")
+                {
+                    StartRoom();
+                    loop = false;
+                }
+                else if (temp == "no")
+                {
+                    MainMenu();
+                    loop = false;
+                }
+                else
+                {
+                    loop = true;
+                    Console.WriteLine("I think you may have trouble with this game. Please enter Yes or No");
+
+                }
             }
         }
 

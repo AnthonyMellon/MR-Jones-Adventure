@@ -63,7 +63,7 @@ namespace MrJonesAdventure
             }
             if (selection == 0)
             {
-                StartRoom();
+                Intro();
             }
             else if (selection == 1)
             {
@@ -123,7 +123,22 @@ namespace MrJonesAdventure
             Console.WriteLine("There are two doors infront of you");
             Console.WriteLine("Which door do you want to take?");
             Console.WriteLine("Left".PadRight(40) + "Right");
-            Console.ReadLine();
+            string temp = Console.ReadLine().ToLower();
+            if (temp == "left")
+            {
+                Room1();
+            }
+            else if (temp == "right")
+            {
+                Room2();
+            }
+            else
+            {
+                Console.WriteLine("insert left or right");
+            }
+
+            
+           
 
 
         }
@@ -140,6 +155,28 @@ namespace MrJonesAdventure
         static void Room2()
         {
 
+        }
+
+        static void Intro()
+        {
+            Console.WriteLine("Welcome to Mr Jones Adventure");
+            Console.WriteLine("This is a text based adventure game, you will be given options on screen to choose from such as solving puzzles or avoiding traps");
+            Console.WriteLine("Your goal is to find treasure within the tomb and escape without dying");
+            Console.WriteLine();
+            Console.WriteLine("Are you ready to begin");
+            Console.WriteLine("Yes".PadRight(20) + "No");
+            if (Console.ReadLine().ToLower() == "yes")
+            {
+                StartRoom();
+            }
+            else if (Console.ReadLine().ToLower() == "no")
+            {
+                MainMenu();
+            }
+            else
+            {
+                Console.WriteLine("I think you may have trouble with this game. Please enter Yes or No");
+            }
         }
 
         static int NumLoop(int input, int min, int max)

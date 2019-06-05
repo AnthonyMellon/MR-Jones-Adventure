@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace MrJonesAdventure
 {
+    public struct Stats
+    {
+        public int health;
+        public string[] Inventory;
+        public bool treasure;
+    }
+
     class Program
     {        
-
         static void MainMenu()
         {
             string[] MenuOptions = { "", "", "", ""};
@@ -26,7 +32,11 @@ namespace MrJonesAdventure
 
         static void Player()
         {
-
+            const int MAXHEALTH = 5;
+            Stats playerInfo;
+            playerInfo.health = MAXHEALTH;
+            playerInfo.Inventory = new string[5];
+            playerInfo.Inventory[0] = "Whip";
         }
 
         static void UI()

@@ -63,8 +63,22 @@ namespace MrJonesAdventure
 
         }
 
+        static void StartRoom()
+        {
+            Console.WriteLine("There are two doors infront of you");
+            Console.WriteLine("Which door do you want to take?");
+            Console.WriteLine("Left".PadRight(40) + "Right");
+            Console.ReadLine();
+
+
+        }
+
         static void Room1()
         {
+
+
+
+
 
         }
 

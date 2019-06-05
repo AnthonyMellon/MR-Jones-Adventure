@@ -22,9 +22,18 @@ namespace MrJonesAdventure
             ConsoleKeyInfo keyPressed;
             int selection = 0;
             while (menuLoop == true)
-            {                
+            {
+                Console.WriteLine();
+                Console.WriteLine("███╗   ███╗██████╗          ██╗ ██████╗ ███╗   ██╗███████╗███████╗     █████╗ ██████╗ ██╗   ██╗███████╗███╗   ██╗████████╗██╗   ██╗██████╗ ███████╗");
+                Console.WriteLine("████╗ ████║██╔══██╗         ██║██╔═══██╗████╗  ██║██╔════╝██╔════╝    ██╔══██╗██╔══██╗██║   ██║██╔════╝████╗  ██║╚══██╔══╝██║   ██║██╔══██╗██╔════╝");
+                Console.WriteLine("██╔████╔██║██████╔╝         ██║██║   ██║██╔██╗ ██║█████╗  ███████╗    ███████║██║  ██║██║   ██║█████╗  ██╔██╗ ██║   ██║   ██║   ██║██████╔╝█████╗  ");
+                Console.WriteLine("██║╚██╔╝██║██╔══██╗    ██   ██║██║   ██║██║╚██╗██║██╔══╝  ╚════██║    ██╔══██║██║  ██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║   ██║   ██║   ██║██╔══██╗██╔══╝  ");
+                Console.WriteLine("██║ ╚═╝ ██║██║  ██║    ╚█████╔╝╚██████╔╝██║ ╚████║███████╗███████║    ██║  ██║██████╔╝ ╚████╔╝ ███████╗██║ ╚████║   ██║   ╚██████╔╝██║  ██║███████╗");
+                Console.WriteLine("╚═╝     ╚═╝╚═╝  ╚═╝     ╚════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝    ╚═╝  ╚═╝╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝");
+                Console.WriteLine("\n\n\n\n");
                 for (int i = 0; i < menuOptions.Length; i++) //Write each menu option with the arrow pointer
                 {
+                Console.Write("                                                                   ");
                     if (i == selection)
                     {
                         Console.Write("> ");
@@ -50,7 +59,7 @@ namespace MrJonesAdventure
                     menuLoop = false;
                 }
 
-                selection = NumLoop(selection, 0, menuOptions.Length - 1);
+                selection = NumLoop(selection, 0, menuOptions.Length - 1);                
             }
             if (selection == 0)
             {
@@ -149,6 +158,10 @@ namespace MrJonesAdventure
 
         static void Main()
         {
+            //Console.SetWindowSize(172, 41);
+            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            Console.SetWindowPosition(Console.WindowLeft, Console.WindowTop);
+            Console.CursorVisible = false;            
             MainMenu();
         }
     }

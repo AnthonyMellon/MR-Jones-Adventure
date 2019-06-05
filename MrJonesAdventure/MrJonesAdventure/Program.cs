@@ -122,25 +122,28 @@ namespace MrJonesAdventure
         {
             Console.WriteLine("There are two doors infront of you");
             Console.WriteLine("Which door do you want to take?");
-            Console.WriteLine("Left".PadRight(40) + "Right");
-            string temp = Console.ReadLine().ToLower();
-            if (temp == "left")
-            {
-                Room1();
-            }
-            else if (temp == "right")
-            {
-                Room2();
-            }
-            else
-            {
-                Console.WriteLine("insert left or right");
-            }
+            Console.WriteLine("Left".PadRight(40) + "Right");           
+            bool loop = true;
+            string temp;
 
-            
-           
-
-
+            while (loop == true)
+            {
+                temp = Console.ReadLine().ToLower();
+                if (temp == "left")
+                {
+                    Room1();
+                    loop = false;
+                }
+                else if (temp == "right")
+                {
+                    Room2();
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("insert left or right");
+                }
+            }                   
         }
 
         static void Room1()
@@ -154,7 +157,7 @@ namespace MrJonesAdventure
 
         static void Room2()
         {
-
+            Console.WriteLine("");
         }
 
         static void Intro()

@@ -22,8 +22,7 @@ namespace MrJonesAdventure
             ConsoleKeyInfo keyPressed;
             int selection = 0;
             while (menuLoop == true)
-            {
-                Console.Clear();
+            {                
                 for (int i = 0; i < menuOptions.Length; i++) //Write each menu option with the arrow pointer
                 {
                     if (i == selection)
@@ -37,6 +36,7 @@ namespace MrJonesAdventure
                     Console.WriteLine(menuOptions[i]);
                 }
                 keyPressed = Console.ReadKey();
+                Console.Clear();
                 if (keyPressed.Key == ConsoleKey.UpArrow)
                 {
                     selection--;
@@ -49,30 +49,31 @@ namespace MrJonesAdventure
                 {
                     menuLoop = false;
                 }
+
                 selection = NumLoop(selection, 0, menuOptions.Length - 1);
-                if (selection == 0)
-                {
-                    StartRoom();
-                }
-                else if (selection == 1)
-                {
-                    Settings();
-                }
+            }
+            if (selection == 0)
+            {
+                StartRoom();
+            }
+            else if (selection == 1)
+            {
+                Settings();
             }
         }
         static void Settings()
         {
-
+            Console.WriteLine("Settings");
         }
 
         static void PauseMenu()
         {
-
+            Console.WriteLine("Pause Menu");
         }
 
         static void InventoryMenu()
         {
-
+            Console.WriteLine("Inventory Menu");
         }
 
         static void Player()

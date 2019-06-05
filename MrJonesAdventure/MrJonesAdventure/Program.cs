@@ -17,7 +17,52 @@ namespace MrJonesAdventure
     {        
         static void MainMenu()
         {
-            string[] MenuOptions = { "", "", "", ""};
+            string[] menuOptions = { "Play", "Settings", "Quit"};
+            bool menuLoop = true;
+            ConsoleKeyInfo keyPressed;
+            int selection = 0;
+            while (menuLoop == true)
+            {
+                Console.Clear();
+                for (int i = 0; i < menuOptions.Length; i++) //Write each menu option with the arrow pointer
+                {
+                    if (i == selection)
+                    {
+                        Console.Write("> ");
+                    }
+                    else
+                    {
+                        Console.Write("  ");
+                    }
+                    Console.WriteLine(menuOptions[i]);
+                }
+                keyPressed = Console.ReadKey();
+                if (keyPressed.Key == ConsoleKey.UpArrow)
+                {
+                    selection--;
+                }
+                else if (keyPressed.Key == ConsoleKey.DownArrow)
+                {
+                    selection++;
+                }
+                else if (keyPressed.Key == ConsoleKey.Enter)
+                {
+                    menuLoop = false;
+                }
+                selection = NumLoop(selection, 0, menuOptions.Length - 1);
+                if (selection == 0)
+                {
+                    StartRoom();
+                }
+                else if (selection == 1)
+                {
+                    Settings();
+                }
+            }
+        }
+        static void Settings()
+        {
+
         }
 
         static void PauseMenu()
@@ -71,6 +116,19 @@ namespace MrJonesAdventure
         static void Room2()
         {
 
+        }
+
+        static int NumLoop(int input, int min, int max)
+        {
+            if (input > max)
+            {
+                input = min;
+            }
+            else if (input < min)
+            {
+                input = max;
+            }
+            return input;
         }
 
 

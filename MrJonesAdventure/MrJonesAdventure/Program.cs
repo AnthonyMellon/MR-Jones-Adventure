@@ -122,26 +122,26 @@ namespace MrJonesAdventure
         {
             Console.WriteLine("There are two doors infront of you");
             Console.WriteLine("Which door do you want to take?");
-            Console.WriteLine("Left".PadRight(40) + "Right");           
+            Console.WriteLine("North".PadRight(40) + "East");           
             bool loop = true;
             string temp;
 
             while (loop == true)
             {
                 temp = Console.ReadLine().ToLower();
-                if (temp == "left")
+                if (temp == "north")
                 {
                     Room1();
                     loop = false;
                 }
-                else if (temp == "right")
+                else if (temp == "east")
                 {
                     Room2();
                     loop = false;
                 }
                 else
                 {
-                    Console.WriteLine("insert left or right");
+                    Console.WriteLine("insert North or East");
                 }
             }                   
         }
@@ -162,6 +162,61 @@ namespace MrJonesAdventure
         static void Room2()
         {
             Console.WriteLine("");
+        }
+
+        static void Room3()
+        {
+            Console.WriteLine("You enter the room and there are two more doors, one to the North and one to the East");
+            Console.WriteLine("Which door would you like to take?");
+            Console.WriteLine("North".PadRight(40) + "East".PadRight(40) + "South");
+            string temp = Console.ReadLine().ToLower();
+            bool loop = true;
+
+            while (loop == true)
+            {
+                switch (temp)
+                {
+                    case "north":
+                        Room5();
+                        loop = false;
+                        break;
+
+                    case "east":
+                        Room16();
+                        loop = false;
+                        break;
+
+                    case "south":
+                        Room1();
+                        loop = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("You didnt pick any of the doors");
+                        break;
+                }
+            }
+
+
+            
+
+
+        }
+
+
+        static void Room4()
+        {
+
+        }
+
+        static void Room5()
+        {
+
+        }
+
+        static void Room16()
+        {
+
         }
 
         static void Intro()

@@ -70,14 +70,22 @@ namespace MrJonesAdventure
                 Settings();
             }
         }
+        static void Pause()
+        {
+
+        }
         static void Settings()
         {
             Console.WriteLine("Settings");
+            Console.ReadLine();
+            Console.Clear();
+            MainMenu();
         }
 
         static void PauseMenu()
         {
-            Console.WriteLine("Pause Menu");
+            Console.WriteLine("Paused");
+            Console.ReadLine();
         }
 
         static void InventoryMenu()

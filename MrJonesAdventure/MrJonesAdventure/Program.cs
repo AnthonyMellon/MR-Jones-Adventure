@@ -177,12 +177,12 @@ namespace MrJonesAdventure
                 switch (temp)
                 {
                     case "north":
-                        Room5();
+                        Room6();
                         loop = false;
                         break;
 
                     case "east":
-                        Room16();
+                        Room5();
                         loop = false;
                         break;
 
@@ -206,6 +206,36 @@ namespace MrJonesAdventure
 
         static void Room4()
         {
+            Console.WriteLine("You enter the room and there are two more doors, one to the North and one to the East");
+            Console.WriteLine("Which door would you like to take?");
+            Console.WriteLine("North".PadRight(40) + "East".PadRight(40) + "South");
+            string temp = Console.ReadLine().ToLower();
+            bool loop = true;
+
+            while (loop == true)
+            {
+                switch (temp)
+                {
+                    case "north":
+                        Room5();
+                        loop = false;
+                        break;
+
+                    case "east":
+                        Room7();
+                        loop = false;
+                        break;
+
+                    case "south":
+                        Room2();
+                        loop = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("You didnt pick any of the doors");
+                        break;
+                }
+            }
 
         }
 
@@ -214,7 +244,12 @@ namespace MrJonesAdventure
 
         }
 
-        static void Room16()
+        static void Room6()
+        {
+
+        }
+
+        static void Room7()
         {
 
         }

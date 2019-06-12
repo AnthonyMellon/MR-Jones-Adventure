@@ -202,12 +202,13 @@ namespace MrJonesAdventure
             }                   
         }
 
+        
         static void Room1()
         {
             Console.WriteLine("You enter the room that has 1 door which is locked.");
             Console.WriteLine("To unlock the door you must complete the puzzle.");
             Puzzle1();
-            
+
 
 
 
@@ -217,7 +218,29 @@ namespace MrJonesAdventure
 
         static void Room2()
         {
-            Console.WriteLine("");
+            Console.WriteLine("Which door do you want to take?");
+            Console.WriteLine("North".PadRight(40) + "West");
+            bool loop = true;
+            string temp;
+
+            while (loop == true)
+            {
+                temp = Console.ReadLine().ToLower();
+                if (temp == "north")
+                {
+                    Room1();
+                    loop = false;
+                }
+                else if (temp == "west")
+                {
+                    Room2();
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("insert North or West");
+                }
+            }
         }
 
         static void Room3()
@@ -254,7 +277,7 @@ namespace MrJonesAdventure
             }
 
 
-            
+
 
 
         }
@@ -297,18 +320,44 @@ namespace MrJonesAdventure
 
         static void Room5()
         {
+            Console.WriteLine("Which door do you want to take?");
+            Console.WriteLine("West".PadRight(40) + "South");
+            bool loop = true;
+            string temp;
 
+            while (loop == true)
+            {
+                temp = Console.ReadLine().ToLower();
+                if (temp == "west")
+                {
+                    Room3();
+                    loop = false;
+                }
+                else if (temp == "south")
+                {
+                    Room4();
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("insert West or South");
+                }
+            }
         }
 
         static void Room6()
         {
+            Console.WriteLine("You Enter the room and there is are 3 key in the middle of the room. As you move closer you realise they are on pressure plates");
+            Console.WriteLine("To figure out which key to take, you must complete the puzzle on the wall");
+            Puzzle1();
 
         }
 
         static void Room7()
         {
-
+            Console.WriteLine("There is a chest in the middle of the room ");
         }
+
 
         static void Intro()
         {

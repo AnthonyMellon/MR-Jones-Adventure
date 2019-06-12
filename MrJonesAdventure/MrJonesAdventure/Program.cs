@@ -11,7 +11,7 @@ namespace MrJonesAdventure
     {
         public int health;
         public string[] Inventory;
-        public bool treasure;
+        public bool treasure, key;
     }    
 
     class Program
@@ -128,6 +128,35 @@ namespace MrJonesAdventure
 
         static void Puzzle1()
         {
+            bool loop = true;
+            Console.WriteLine("The wall reads 82 105 103 104 116");
+            Console.WriteLine("Which key do you take: Left  Middle  Right");
+            string answer = Console.ReadLine().ToLower();
+
+            while (loop == true)
+            {               
+                if (answer == "left")
+                {
+                    Console.WriteLine("You died Lmao");
+                    Console.ReadLine();
+                    loop = false;
+                }
+                else if (answer == "middle")
+                {
+                    Console.WriteLine("You died Lmao");
+                    Console.ReadLine();
+                    loop = false;
+                }
+                else if (answer == "right")
+                {
+                    playerInfo.key = true;
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("Enter left right or middle");
+                }
+            }
 
         }
         static void Puzzle2()

@@ -20,7 +20,8 @@ namespace MrJonesAdventure
 
         static void MainMenu()
         {
-            string[] menuOptions = { "New Game", "Load Game", "Quit" };
+            Console.Clear();
+            string[] menuOptions = { "New Game", "Load Game", "Settings", "Quit" };
             bool menuLoop = true;
             ConsoleKeyInfo keyPressed;
             int selection = 0;
@@ -72,20 +73,39 @@ namespace MrJonesAdventure
             {
                 Intro();
             }
+            if(selection == 2)
+            {
+                Settings();
+            }
         }
+        static void Pause()
+        {
 
+        }
+        static void Settings()
+        {
+            Console.WriteLine("Settings");
+            Console.ReadLine();
+            Console.Clear();
+            MainMenu();
+        }
         static void LoadPlayer(string loadFile)
         {
             StreamReader reader = new StreamReader(loadFile);   
         }
         static void PauseMenu()
         {
+
+            Console.WriteLine("Paused");
+            Console.ReadLine();
+
             Console.WriteLine("Your inventory currently contains the following items: ");
             for (int i = 0; i < playerInfo.Inventory.Length; i++)
             {
                 Console.WriteLine($"1) {playerInfo.Inventory[i]}");
             }
             Console.WriteLine("Pause Menu");
+
         }
 
         static void InventoryMenu()

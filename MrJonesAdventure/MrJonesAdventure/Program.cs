@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace MrJonesAdventure
 {
@@ -10,14 +11,17 @@ namespace MrJonesAdventure
     {
         public int health;
         public string[] Inventory;
-        public bool treasure;
-    }
+        public bool treasure, key;
+    }    
 
     class Program
-    {        
+    {
+        public static Stats playerInfo;
+
         static void MainMenu()
         {
-            string[] menuOptions = { "Play", "Settings", "Quit"};
+            Console.Clear();
+            string[] menuOptions = { "New Game", "Load Game", "Settings", "Quit" };
             bool menuLoop = true;
             ConsoleKeyInfo keyPressed;
             int selection = 0;
@@ -33,7 +37,7 @@ namespace MrJonesAdventure
                 Console.WriteLine("\n\n\n\n");
                 for (int i = 0; i < menuOptions.Length; i++) //Write each menu option with the arrow pointer
                 {
-                Console.Write("                                                                   ");
+                    Console.Write("                                                                   ");
                     if (i == selection)
                     {
                         Console.Write("> ");
@@ -59,25 +63,49 @@ namespace MrJonesAdventure
                     menuLoop = false;
                 }
 
-                selection = NumLoop(selection, 0, menuOptions.Length - 1);                
+                selection = NumLoop(selection, 0, menuOptions.Length - 1);
             }
-            if (selection == 0)
+            if (selection == 0) //New Game
+            {                
+                Intro();
+            }
+            if (selection == 1) //Load Game
             {
                 Intro();
             }
-            else if (selection == 1)
+            if(selection == 2)
             {
                 Settings();
             }
         }
+        static void Pause()
+        {
+
+        }
         static void Settings()
         {
             Console.WriteLine("Settings");
+            Console.ReadLine();
+            Console.Clear();
+            MainMenu();
         }
-
+        static void LoadPlayer(string loadFile)
+        {
+            StreamReader reader = new StreamReader(loadFile);   
+        }
         static void PauseMenu()
         {
+
+            Console.WriteLine("Paused");
+            Console.ReadLine();
+
+            Console.WriteLine("Your inventory currently contains the following items: ");
+            for (int i = 0; i < playerInfo.Inventory.Length; i++)
+            {
+                Console.WriteLine($"1) {playerInfo.Inventory[i]}");
+            }
             Console.WriteLine("Pause Menu");
+
         }
 
         static void InventoryMenu()
@@ -87,8 +115,7 @@ namespace MrJonesAdventure
 
         static void Player()
         {
-            const int MAXHEALTH = 5;
-            Stats playerInfo;
+            const int MAXHEALTH = 5;            
             playerInfo.health = MAXHEALTH;
             playerInfo.Inventory = new string[5];
             playerInfo.Inventory[0] = "Whip";
@@ -101,6 +128,35 @@ namespace MrJonesAdventure
 
         static void Puzzle1()
         {
+            bool loop = true;
+            Console.WriteLine("The wall reads 82 105 103 104 116");
+            Console.WriteLine("Which key do you take: Left  Middle  Right");
+            string answer = Console.ReadLine().ToLower();
+
+            while (loop == true)
+            {               
+                if (answer == "left")
+                {
+                    Console.WriteLine("You died Lmao");
+                    Console.ReadLine();
+                    loop = false;
+                }
+                else if (answer == "middle")
+                {
+                    Console.WriteLine("You died Lmao");
+                    Console.ReadLine();
+                    loop = false;
+                }
+                else if (answer == "right")
+                {
+                    playerInfo.key = true;
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("Enter left right or middle");
+                }
+            }
 
         }
         static void Puzzle2()
@@ -280,7 +336,7 @@ namespace MrJonesAdventure
                 else
                 {
                     loop = true;
-                    Console.WriteLine("I think you may have trouble with this game. Please enter Yes or No");
+                    Console.WriteLine("Please enter Yes or No");
 
                 }
             }

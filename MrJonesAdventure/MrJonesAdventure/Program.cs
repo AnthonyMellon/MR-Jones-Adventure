@@ -252,7 +252,7 @@ namespace MrJonesAdventure
                 else
                 {
                     loop = true;
-                    Console.WriteLine("I think you may have trouble with this game. Please enter Yes or No");
+                    Console.WriteLine("Please enter Yes or No");
 
                 }
             }

@@ -11,7 +11,7 @@ namespace MrJonesAdventure
     {
         public int health;
         public string[] Inventory;
-        public bool treasure;
+        public bool treasure, key;
     }    
 
     class Program
@@ -20,7 +20,8 @@ namespace MrJonesAdventure
 
         static void MainMenu()
         {
-            string[] menuOptions = { "New Game", "Load Game", "Quit" };
+            Console.Clear();
+            string[] menuOptions = { "New Game", "Load Game", "Settings", "Quit" };
             bool menuLoop = true;
             ConsoleKeyInfo keyPressed;
             int selection = 0;
@@ -74,20 +75,39 @@ namespace MrJonesAdventure
             {
                 Intro();
             }
+            if(selection == 2)
+            {
+                Settings();
+            }
         }
+        static void Pause()
+        {
 
+        }
+        static void Settings()
+        {
+            Console.WriteLine("Settings");
+            Console.ReadLine();
+            Console.Clear();
+            MainMenu();
+        }
         static void LoadPlayer(string loadFile)
         {
             StreamReader reader = new StreamReader(loadFile);   
         }
         static void PauseMenu()
         {
+
+            Console.WriteLine("Paused");
+            Console.ReadLine();
+
             Console.WriteLine("Your inventory currently contains the following items: ");
             for (int i = 0; i < playerInfo.Inventory.Length; i++)
             {
                 Console.WriteLine($"1) {playerInfo.Inventory[i]}");
             }
             Console.WriteLine("Pause Menu");
+
         }
 
         static void InventoryMenu()
@@ -110,6 +130,35 @@ namespace MrJonesAdventure
 
         static void Puzzle1()
         {
+            bool loop = true;
+            Console.WriteLine("The wall reads 82 105 103 104 116");
+            Console.WriteLine("Which key do you take: Left  Middle  Right");
+            string answer = Console.ReadLine().ToLower();
+
+            while (loop == true)
+            {               
+                if (answer == "left")
+                {
+                    Console.WriteLine("You died Lmao");
+                    Console.ReadLine();
+                    loop = false;
+                }
+                else if (answer == "middle")
+                {
+                    Console.WriteLine("You died Lmao");
+                    Console.ReadLine();
+                    loop = false;
+                }
+                else if (answer == "right")
+                {
+                    playerInfo.key = true;
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("Enter left right or middle");
+                }
+            }
 
         }
         static void Puzzle2()
@@ -155,12 +204,13 @@ namespace MrJonesAdventure
             }                   
         }
 
+        
         static void Room1()
         {
             Console.WriteLine("You enter the room that has 1 door which is locked.");
             Console.WriteLine("To unlock the door you must complete the puzzle.");
             Puzzle1();
-            
+
 
 
 
@@ -170,10 +220,72 @@ namespace MrJonesAdventure
 
         static void Room2()
         {
-            Console.WriteLine("");
+            Console.WriteLine("Which door do you want to take?");
+            Console.WriteLine("North".PadRight(40) + "West");
+            bool loop = true;
+            string temp;
+
+            while (loop == true)
+            {
+                temp = Console.ReadLine().ToLower();
+                if (temp == "north")
+                {
+                    Room1();
+                    loop = false;
+                }
+                else if (temp == "west")
+                {
+                    Room2();
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("insert North or West");
+                }
+            }
         }
 
         static void Room3()
+        {
+            Console.WriteLine("You enter the room and there are two more doors, one to the North and one to the East");
+            Console.WriteLine("Which door would you like to take?");
+            Console.WriteLine("North".PadRight(40) + "East".PadRight(40) + "South");
+            string temp = Console.ReadLine().ToLower();
+            bool loop = true;
+
+            while (loop == true)
+            {
+                switch (temp)
+                {
+                    case "north":
+                        Room6();
+                        loop = false;
+                        break;
+
+                    case "east":
+                        Room5();
+                        loop = false;
+                        break;
+
+                    case "south":
+                        Room1();
+                        loop = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("You didnt pick any of the doors");
+                        break;
+                }
+            }
+
+
+
+
+
+        }
+
+
+        static void Room4()
         {
             Console.WriteLine("You enter the room and there are two more doors, one to the North and one to the East");
             Console.WriteLine("Which door would you like to take?");
@@ -191,12 +303,12 @@ namespace MrJonesAdventure
                         break;
 
                     case "east":
-                        Room16();
+                        Room7();
                         loop = false;
                         break;
 
                     case "south":
-                        Room1();
+                        Room2();
                         loop = false;
                         break;
 
@@ -206,27 +318,48 @@ namespace MrJonesAdventure
                 }
             }
 
-
-            
-
-
-        }
-
-
-        static void Room4()
-        {
-
         }
 
         static void Room5()
         {
+            Console.WriteLine("Which door do you want to take?");
+            Console.WriteLine("West".PadRight(40) + "South");
+            bool loop = true;
+            string temp;
 
+            while (loop == true)
+            {
+                temp = Console.ReadLine().ToLower();
+                if (temp == "west")
+                {
+                    Room3();
+                    loop = false;
+                }
+                else if (temp == "south")
+                {
+                    Room4();
+                    loop = false;
+                }
+                else
+                {
+                    Console.WriteLine("insert West or South");
+                }
+            }
         }
 
-        static void Room16()
+        static void Room6()
         {
+            Console.WriteLine("You Enter the room and there is are 3 key in the middle of the room. As you move closer you realise they are on pressure plates");
+            Console.WriteLine("To figure out which key to take, you must complete the puzzle on the wall");
+            Puzzle1();
 
         }
+
+        static void Room7()
+        {
+            Console.WriteLine("There is a chest in the middle of the room ");
+        }
+
 
         static void Intro()
         {
@@ -254,7 +387,7 @@ namespace MrJonesAdventure
                 else
                 {
                     loop = true;
-                    Console.WriteLine("I think you may have trouble with this game. Please enter Yes or No");
+                    Console.WriteLine("Please enter Yes or No");
 
                 }
             }

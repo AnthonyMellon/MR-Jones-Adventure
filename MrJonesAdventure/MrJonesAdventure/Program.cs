@@ -24,6 +24,8 @@ namespace MrJonesAdventure
             bool menuLoop = true;
             ConsoleKeyInfo keyPressed;
             int selection = 0;
+
+            Console.Clear();
             while (menuLoop == true)
             {
                 Console.WriteLine();
